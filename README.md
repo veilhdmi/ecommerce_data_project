@@ -1,67 +1,62 @@
-📊 E-commerce Data Engineering: Olist Analytics Stack
-🚀 Descripción del Proyecto
-Este proyecto implementa una arquitectura de datos moderna (Modern Data Stack) para transformar los datos crudos del marketplace brasileño Olist en una capa de analítica avanzada (Gold Layer). El objetivo es proporcionar KPIs estratégicos sobre el rendimiento de productos, logística y vendedores.
+# 📊 Olist E-commerce Data Engineering Project
 
-🛠️ Tecnologías Utilizadas
-Almacenamiento: Snowflake (Cloud Data Warehouse)
+## 🚀 Descripción
+Este repositorio contiene un pipeline de datos robusto que transforma datos crudos del marketplace brasileño **Olist** en una arquitectura de análisis de alta calidad (**Gold Layer**). Utilizando la metodología de modelado dimensional, este proyecto permite extraer insights estratégicos sobre ventas, logística y comportamiento de productos.
 
-Transformación: dbt (Data Build Tool) - Core v1.11.2
+[Image of a modern data stack architecture showing Snowflake, dbt, and Looker Studio]
 
-Lenguajes: SQL (JinJa en dbt) & Python (entorno virtual)
+---
 
-Visualización: Looker Studio
+## 🛠️ Tech Stack
+* **Warehouse:** [Snowflake](https://www.snowflake.com/) (Cloud Data Platform)
+* **Transformación:** [dbt Core](https://www.getdbt.com/) (v1.11.2)
+* **Lenguajes:** SQL (Snowflake Dialect) & Jinja
+* **Entorno:** Python 3.9+ (venv)
+* **Visualización:** Looker Studio
+* **Control de Versiones:** Git & GitHub
 
-Control de Versiones: Git & GitHub
+---
 
-🏗️ Arquitectura de Datos (Capa Medallón)
-El proyecto sigue la arquitectura de Medallón para garantizar la calidad y trazabilidad del dato:
+## 🏗️ Arquitectura de Datos: Capa Medallón
+El flujo de datos se divide en tres etapas para garantizar la integridad y trazabilidad:
 
-Bronze (Raw): Datos crudos importados de Olist.
+1. **Bronze (Raw):** Ingesta inicial de los datos de Olist sin modificaciones.
+2. **Silver (Intermediate):** Limpieza de nulos, tipado de datos y normalización de categorías (Traducción de Portugués a Inglés).
+3. **Gold (Analytics):** Modelado final en **Esquema de Estrella (Star Schema)**.
 
-Silver (Integration): Limpieza, tipado de datos y traducción de categorías del portugués al inglés.
+### Tablas en Capa Gold:
+* **Hechos:** `FCT_SALES`, `FCT_PRODUCT_PERFORMANCE`, `FCT_SELLER_PERFORMANCE`.
+* **Dimensiones:** `DIM_PRODUCTS`, `DIM_CUSTOMERS_ENRICHED`, `DIM_CALENDAR`, `DIM_SELLERS`.
 
-Gold (Analytics): Modelado en esquema de estrella (Star Schema) optimizado para BI.
+[Image of medallion architecture diagram showing bronze silver and gold layers]
 
-Tablas de Hechos: FCT_SALES, FCT_PRODUCT_PERFORMANCE, FCT_SELLER_PERFORMANCE.
+---
 
-Dimensiones: DIM_PRODUCTS, DIM_CUSTOMERS, DIM_CALENDAR, DIM_SELLERS.
+## 📈 KPIs Clave Implementados
+* **GMV (Gross Merchandise Volume):** Volumen total de ventas transaccionado.
+* **AOV (Average Order Value):** Ticket promedio por pedido.
+* **Delivery Efficiency:** Tiempo promedio de entrega (Lead Time) por estado.
+* **Product Pareto:** Análisis 80/20 de las categorías que impulsan el negocio.
 
-📈 KPIs Implementados
-GMV (Gross Merchandise Volume): Valor total transaccionado.
+---
 
-AOV (Average Order Value): Ticket promedio por pedido.
+## 🔧 Instalación y Uso
 
-Delivery Lead Time: Tiempo promedio de entrega al cliente final.
+### 1. Requisitos Previos
+* Cuenta en Snowflake.
+* Python instalado localmente.
 
-Pareto de Categorías: Identificación de las categorías que generan el 80% de los ingresos.
+### 2. Configuración del Proyecto
+```bash
+# Clonar el repositorio
+git clone [https://github.com/TU_USUARIO/TU_REPO.git](https://github.com/TU_USUARIO/TU_REPO.git)
+cd TU_REPO
 
-🔧 Instalación y Configuración
-Clonar el repositorio:
-
-Bash
-
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
-Configurar el Entorno Virtual:
-
-Bash
-
+# Crear y activar entorno virtual
 python -m venv venv
-# Activar en Windows:
-.\venv\Scripts\activate
-# Activar en Mac/Linux:
-source venv/bin/activate
-Instalar dependencias:
+.\venv\Scripts\activate  # Windows
+source venv/bin/activate # Mac/Linux
 
-Bash
-
+# Instalar dependencias de Python y dbt
 pip install -r requirements.txt
 dbt deps
-Configurar dbt: Asegúrate de configurar tu archivo profiles.yml con tus credenciales de Snowflake.
-
-Ejecutar el pipeline:
-
-Bash
-
-dbt run
-dbt test
