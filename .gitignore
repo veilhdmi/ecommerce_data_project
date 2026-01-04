@@ -1,0 +1,12 @@
+# Entorno virtual
+venv/
+env/
+
+# dbt artifacts
+target/
+dbt_packages/
+logs/
+
+# Snowflake / Credenciales (NUNCA subas tu profiles.yml)
+profiles.yml
+.env

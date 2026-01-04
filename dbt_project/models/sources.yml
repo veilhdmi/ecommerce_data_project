@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: olist_raw
+    description: "Dataset completo de Olist cargado en Snowflake"
+    database: OLIST_DB  # Nombre de tu DB en Snowflake
+    schema: BRONZE      # Esquema donde corriste el 'dbt seed'
+    tables:
+      - name: raw_category_translation
+      - name: raw_customers
+      - name: raw_orders
+      - name: raw_items
+      - name: raw_products
+      - name: raw_payments
+      - name: raw_reviews
+      - name: raw_sellers
+      - name: raw_geolocation

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: int_orders_cleansed
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+  - name: int_customers_cleansed
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
