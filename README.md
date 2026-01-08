@@ -1,7 +1,3 @@
-Aquí tienes el documento completo y unificado en formato Markdown (`.md`), listo para ser copiado directamente a tu repositorio de GitHub o a tu portafolio personal.
-
----
-
 # 📊 Strategic Data Engineering: Scaling Insights for Olist E-commerce
 
 ## 🎯 Project Vision
