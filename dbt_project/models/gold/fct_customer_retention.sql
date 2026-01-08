@@ -1,4 +1,6 @@
-{{ config(materialized='table') }}
+-- Antes: {{ config(materialized='table') }}
+-- Después:
+{{ config(materialized='ephemeral') }}
 
 WITH customer_orders AS (
     SELECT
