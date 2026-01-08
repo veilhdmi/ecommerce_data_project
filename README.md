@@ -61,7 +61,7 @@ I engineered complex Fact tables that pre-calculate critical KPIs to reduce runt
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/olist-dbt-snowflake.git
+git clone https://github.com/veilhdmi/ecommerce_data_project.git
 cd olist-dbt-snowflake
 
 ```
